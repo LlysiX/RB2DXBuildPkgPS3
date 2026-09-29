@@ -3,7 +3,7 @@ using SCEllSharp.SFO;
 using SCEllSharp.NPDRM;
 using System.ComponentModel.DataAnnotations;
 
-if (args.Length < 4)
+if (args.Length < 3)
 {
     Console.WriteLine($"usage: RB3DXBuildPkgPS3 [/path/to/content/folder] [eur|usa] [content id suffix] [/path/to/out/dir]");
     Console.WriteLine($"   eg: RB3DXBuildPkgPS3 out/ps3 usa RB3DXNITESKIBIDI out");
