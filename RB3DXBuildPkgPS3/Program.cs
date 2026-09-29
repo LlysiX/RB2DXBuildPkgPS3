@@ -10,32 +10,15 @@ if (args.Length < 4)
     return;
 }
 string arg_content_path = args[0];
-string arg_region = args[1];
-string arg_id_suffix = args[2];
-string arg_output_pkg = args[3];
+string arg_id_suffix = args[1];
+string arg_output_pkg = args[2];
 
 // set the values to be used when building the pkg and PARAM.SFO
 string content_id;
-string title_id;
-string title_version;
-string title_name = "Rock Band 3"; // don't recommend changing this
-if (arg_region == "usa")
-{
-    title_id = "BLUS30463";
-    content_id = $"UP8802-{title_id}_00-{arg_id_suffix}";
-    title_version = "01.05";
-}
-else if (arg_region == "eur")
-{
-    title_id = "BLES00986";
-    content_id = $"EP0006-{title_id}_00-{arg_id_suffix}";
-    title_version = "01.06";
-}
-else
-{
-    Console.Error.WriteLine("invalid region provided! must be eur or usa");
-    return;
-}
+string title_id = "BLUS30147";
+string title_version = "02.00";
+string title_name = "Rock Band 2"; // don't recommend changing this
+content_id = $"UP0006-{title_id}_00-{arg_id_suffix}";
 
 // some basic sanity checks. looks ugly but it's good
 if (title_id.Length != 9)
@@ -78,7 +61,7 @@ try
 
 
 // tell the console what we're doing
-Console.WriteLine("Building RB3DX PKG file for PS3...");
+Console.WriteLine("Building RB2DX PKG file for PS3...");
 Console.WriteLine("Output path: " + arg_output_pkg);
 Console.WriteLine("Content ID: " + content_id);
 Console.WriteLine("Title ID: " + title_id);
@@ -90,7 +73,7 @@ ParamSFO sfo = new();
 sfo.AddValue("APP_VER", title_version, 0x8);
 sfo.AddValue("CATEGORY", "GD", 0x4); // Game Data
 sfo.AddValue("PARENTAL_LEVEL", 5); // PEGI 12
-sfo.AddValue("PS3_SYSTEM_VER", "03.6000", 0x8);
+sfo.AddValue("PS3_SYSTEM_VER", "02.4000", 0x8);
 sfo.AddValue("TITLE", title_name, 0x80);
 sfo.AddValue("TITLE_ID", title_id, 0x10);
 sfo.AddValue("VERSION", "01.00", 0x8);
